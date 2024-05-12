@@ -30,15 +30,11 @@ void main(void)
     vec4 color1 = vec4(rgb1, 1.0);
     vec4 color2 = vec4(rgb2, 1.0);
 
-    float grain = rand(uv * 100.0);
-    grain = grain * mix(0.2, 0.01, strength);
-
     vec2 movement = vec2(u_time * 0.005, u_time * -0.005);
     movement *= rotate2d(u_time * 0.0005);
     
     float f = fbm( uv + movement );
     f *= 10.0;
-    // f += grain;
     f += u_time * 0.3;
     f = fract(f);
     
