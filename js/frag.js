@@ -6,7 +6,6 @@ const frag = `
 	uniform float u_time;
   uniform vec2 u_resolution;
   uniform vec2 u_mouse;
-	uniform float seed;
 
 	${includes}
 

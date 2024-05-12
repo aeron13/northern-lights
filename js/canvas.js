@@ -19,5 +19,4 @@ window.addEventListener('load', () => {
   calcSize()
   document.querySelector('.canvas-holder').appendChild(canvas);
   sandbox.load(frag);
-	sandbox.setUniform("seed", Math.random())
 });
