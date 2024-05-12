@@ -19,10 +19,18 @@ void main(void)
     float dist = distance(uv, mouse);
     float strength = smoothstep(0.7, 0.0, dist);
 
-    float hue = 0.25;
+    float sky = smoothstep(1.0, 0.0, uv.y);
     
-    vec3 h1 = vec3(hue - strength * 0.08, 1.0, 0.4 + strength * 0.2);
-    vec3 h2 = vec3(0.6, 0.5, 0.2);
+    float skyHue = 0.6;
+    float skySat = 0.5;
+    float skyBright = 0.1 * sky + 0.1;
+
+    float hue = mix(skyHue, 0.25, uv.y);
+    float sat = mix(skySat, 1.0, smoothstep(0.3, 1.0, uv.y) );
+    float bright = mix(skyBright, 0.6, smoothstep(0.3, 1.0, uv.y) );
+    
+    vec3 h1 = vec3(hue - strength * 0.15, sat, bright );
+    vec3 h2 = vec3(skyHue, skySat, skyBright);
     
     vec3 rgb1 = hsv2rgb(h1);
     vec3 rgb2 = hsv2rgb(h2);
